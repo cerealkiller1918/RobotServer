@@ -47,8 +47,12 @@ class StreamImage {
             } catch (Exception e) {
                 removeClient(i);
             }
-            Thread.sleep(10);
+            sleep();
         }
+    }
+
+    private void sleep() throws InterruptedException {
+        Thread.sleep(10);
     }
 
     private void removeClient(int i) {
