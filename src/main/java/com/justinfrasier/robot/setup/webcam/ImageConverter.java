@@ -34,16 +34,15 @@ public class ImageConverter {
         return transformOp.filter(src,null);
     }
 
-    public BufferedImage IplImageToBufferedImage(opencv_core.IplImage src){
+    private BufferedImage IplImageToBufferedImage(opencv_core.IplImage src){
         OpenCVFrameConverter.ToIplImage iplImage = new OpenCVFrameConverter.ToIplImage();
         Java2DFrameConverter bimConverter = new Java2DFrameConverter();
         Frame frame = iplImage.convert(src);
-        BufferedImage image = bimConverter.convert(frame);
         //return FlipImage(image);
-        return image;
+        return bimConverter.convert(frame);
     }
 
-    public  byte[] IplImageToByteArray(opencv_core.IplImage src) throws IOException {
+    byte[] IplImageToByteArray(opencv_core.IplImage src) throws IOException {
         BufferedImage image = IplImageToBufferedImage(src);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ImageIO.write(image,"jpg",outputStream);
