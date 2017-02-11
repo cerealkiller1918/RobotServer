@@ -27,24 +27,6 @@ public class ImageConverter {
         }
     }
 
-    public byte[] getBytesFromInputStream(InputStream is) throws IOException
-    {
-        try {
-            try (ByteArrayOutputStream os = new ByteArrayOutputStream()) {
-                byte[] buffer = new byte[0xFFFF];
-
-                for (int len; (len = is.read(buffer)) != -1; )
-                    os.write(buffer, 0, len);
-
-                os.flush();
-
-                return os.toByteArray();
-            }
-        }catch (IOException e){
-            return null;
-        }
-    }
-
     public BufferedImage FlipImage(BufferedImage src){
         AffineTransform affineTransform = AffineTransform.getScaleInstance(-1.0, 1.0);
         affineTransform.translate(-src.getWidth(),0);
@@ -69,21 +51,6 @@ public class ImageConverter {
         byte[] imageBytes = outputStream.toByteArray();
         outputStream.close();
         return imageBytes;
-    }
-    public opencv_core.IplImage ByteArrayToIplImage(byte[] bytes) throws IOException {
-        return BufferedImageToIplImage(BytesToBufferedImage(bytes));
-    }
-
-    public  BufferedImage BytesToBufferedImage(byte[] bytes) throws IOException {
-        ByteArrayInputStream stream = new ByteArrayInputStream(bytes);
-        return ImageIO.read(stream);
-    }
-
-    public opencv_core.IplImage BufferedImageToIplImage(BufferedImage bufImage){
-        OpenCVFrameConverter.ToIplImage toIplImage = new OpenCVFrameConverter.ToIplImage();
-        Java2DFrameConverter java2DFrameConverter = new Java2DFrameConverter();
-        opencv_core.IplImage iplImage = toIplImage.convert(java2DFrameConverter.convert(bufImage));
-        return iplImage;
     }
 
 }
