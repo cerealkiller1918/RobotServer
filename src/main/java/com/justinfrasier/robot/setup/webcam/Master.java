@@ -5,17 +5,16 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Master {
+class Master {
 
     private ServerSocket serverSocket;
     private Transaction transaction;
-    private StreamImage streamImage;
 
-    public void run(){
+    void run(){
         try {
             SetupServerSocket();
             transaction = new Transaction();
-            streamImage = new StreamImage(transaction);
+            StreamImage streamImage = new StreamImage(transaction);
             streamImage.startLoop();
             while (true) try {
                 acceptClient();
