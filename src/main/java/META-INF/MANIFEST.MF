@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: com.justinfrasier.robot.setup.webcam.WebCam
+Main-Class: com.justinfrasier.robot.setup.webcam.Main
 

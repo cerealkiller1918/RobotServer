@@ -22,7 +22,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.justinfrasier.robot.setup.webcam.WebCam</mainClass>
+                                    <mainClass>com.justinfrasier.robot.setup.webcam.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
@@ -33,8 +33,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
