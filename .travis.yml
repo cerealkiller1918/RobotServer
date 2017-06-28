@@ -1,6 +1,6 @@
 language: java
-sudo: false
-script: mvn compile
+sudo: true
+script: mvn install
 group: stable
 dist: precise
 os: linux
