@@ -1,0 +1,6 @@
+language: java
+sudo: false
+script: mvn compile
+group: stable
+dist: precise
+os: linux
