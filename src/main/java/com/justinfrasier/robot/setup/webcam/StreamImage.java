@@ -31,6 +31,7 @@ class StreamImage {
     private Runnable getRunnable() {
         return () ->{
                 opencv_videoio.CvCapture capture = webCam();
+
                 opencv_core.IplImage frame;
             while (true) try {
                 frame = cvQueryFrame(capture);
@@ -68,7 +69,8 @@ class StreamImage {
     }
 
     private opencv_videoio.CvCapture webCam() {
-        return cvCreateCameraCapture(CV_CAP_ANY);
+
+        return cvCreateCameraCapture(1);
     }
     private void sleep(long millis){
         try{

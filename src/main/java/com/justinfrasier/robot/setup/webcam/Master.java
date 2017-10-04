@@ -20,7 +20,10 @@ class Master {
             while (true) try {
                 acceptClient();
             } catch (IOException ignored){}
-        }catch (IOException ignored){}
+        }catch (IOException e){
+            System.out.println("Not Working");
+            e.printStackTrace();
+        }
     }
 
     private void acceptClient() throws IOException {
