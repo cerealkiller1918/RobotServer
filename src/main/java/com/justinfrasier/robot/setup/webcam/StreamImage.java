@@ -34,7 +34,7 @@ class StreamImage {
                 opencv_core.IplImage frame;
             while (true) try {
                 frame = cvQueryFrame(capture);
-                sleep(100);
+                //sleep(50);
                 bytes = converter.IplImageToByteArray(frame);
                 iterateThroughClients();
             } catch (Exception ignored) {}
