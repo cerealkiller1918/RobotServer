@@ -18,6 +18,7 @@ class Master {
             StreamImage streamImage = new StreamImage(transaction);
             streamImage.startLoop();
             while (true) try {
+                
                 acceptClient();
             } catch (IOException ignored){}
         }catch (IOException e){
