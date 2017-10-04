@@ -70,11 +70,13 @@ class StreamImage {
     }
 
     private opencv_videoio.CvCapture webCam() {
-        for(int i=0;i<5; i++){
+        System.out.println("Checking for cam");
+        for(int i=0;i<10; i++){
             try{
                 opencv_videoio.CvCapture test = cvCreateCameraCapture(i);
                 if (!test.isNull())
                     System.out.println("Cam is at "+i);
+                test.close();
             }catch (NullPointerException in){}
         }
         System.out.println("Enter Cam index number");
