@@ -1,0 +1,6 @@
+language: java
+sudo: true
+script: mvn install
+group: stable
+dist: precise
+os: linux
