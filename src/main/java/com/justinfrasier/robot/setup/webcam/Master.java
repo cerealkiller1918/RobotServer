@@ -12,6 +12,7 @@ class Master {
 
     void run(){
         try {
+            System.out.println("Server has Started");
             SetupServerSocket();
             transaction = new Transaction();
             StreamImage streamImage = new StreamImage(transaction);

@@ -34,6 +34,7 @@ class StreamImage {
                 opencv_core.IplImage frame;
             while (true) try {
                 frame = cvQueryFrame(capture);
+                sleep(100);
                 bytes = converter.IplImageToByteArray(frame);
                 iterateThroughClients();
             } catch (Exception ignored) {}
@@ -43,24 +44,24 @@ class StreamImage {
     private void iterateThroughClients() throws InterruptedException {
         for (int i = 0; i < list.listSize(); i++) {
             try {
-                pushImage(i);
+                pushImageDownStream(i);
             } catch (Exception e) {
-                removeClient(i);
+                removeClientFromList(i);
             }
-            sleep();
+            ifListIsGreaterThenOneThenSleep(10);
         }
     }
 
-    private void sleep() throws InterruptedException {
-        Thread.sleep(10);
+    private void ifListIsGreaterThenOneThenSleep(int mill) throws InterruptedException {
+        if(list.listSize() > 1) Thread.sleep(mill);
     }
 
-    private void removeClient(int i) {
+    private void removeClientFromList(int i) {
         list.removeOutputStream(i);
         System.out.println("Client has left");
     }
 
-    private void pushImage(int i) throws IOException {
+    private void pushImageDownStream(int i) throws IOException {
         list.getOutputStream(i).writeInt(bytes.length);
         list.getOutputStream(i).write(bytes);
         list.getOutputStream(i).flush();
@@ -68,5 +69,10 @@ class StreamImage {
 
     private opencv_videoio.CvCapture webCam() {
         return cvCreateCameraCapture(CV_CAP_ANY);
+    }
+    private void sleep(long millis){
+        try{
+            Thread.sleep(millis);
+        }catch (InterruptedException ignored){}
     }
 }
