@@ -5,6 +5,7 @@ import org.bytedeco.javacpp.opencv_core;
 import org.bytedeco.javacpp.opencv_videoio;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 import static org.bytedeco.javacpp.opencv_videoio.CV_CAP_ANY;
 import static org.bytedeco.javacpp.opencv_videoio.cvCreateCameraCapture;
@@ -69,8 +70,10 @@ class StreamImage {
     }
 
     private opencv_videoio.CvCapture webCam() {
-
-        return cvCreateCameraCapture(1);
+        System.out.println("Enter Cam index number");
+        Scanner scanner = new Scanner(System.in);
+        int i = scanner.nextInt();
+        return cvCreateCameraCapture(i);
     }
     private void sleep(long millis){
         try{
