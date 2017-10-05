@@ -71,7 +71,7 @@ class StreamImage {
 
     private opencv_videoio.CvCapture webCam() {
         System.out.println("Checking for cam");
-        for(int i=0;i<10; i++){
+        for(int i=0;i<99; i++){
             try{
                 opencv_videoio.CvCapture test = cvCreateCameraCapture(i);
                 if (!test.isNull())
